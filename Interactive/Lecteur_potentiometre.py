@@ -1,4 +1,4 @@
-rom machine import ADC, Pin
+from machine import ADC, Pin
 
 
 
@@ -13,7 +13,7 @@ potentiometre_Y = ADC(Pin (POTENTIOMETRE_Y_PIN))
 stylo = Pin(STYLO_PIN, Pin.IN, Pin.PULL_DOWN)
 
 ADC_MAX = 65535
-DISTANCE = 10 #centimetres
+DISTANCE = 100 #millimetres
 
 # position presente et precedente 
 x = 0.0
@@ -39,5 +39,14 @@ def lecture():
     ancien_x = x_adc
     ancien_y = y_adc
 
-    return x, y, state # x, y est en centimetre et state est en True or False
+    return x, y, state # x, y est en millimetre et state est en True or False
+
+def reinitialiser_lectures():
+    global x, y, ancien_x, ancien_y
+
+    x = 0
+    y = 0
+
+    ancien_x = potentiometre_X.read_u16()
+    ancien_y = potentiometre_Y.read_u16()
 
