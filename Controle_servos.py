@@ -1,4 +1,5 @@
 from Traducteur_servo import traduit
+from Interactive.Lecture_potentiometres import reinitialiser_lectures
 from machine import PWM, Pin
 from time import sleep
 
@@ -49,3 +50,10 @@ def abaisser_stylo(servo):
     """Abaisse le stylo"""
     servo.duty_u16(traduit(ANGLE_STYLO_BAS))
     sleep(PAUSE_STYLO_S)
+
+def retour_position_initial(servos, angle_epaule, angle_coude):
+    """ reinitialise la position du stylo ainsi que les donnees de lectures"""
+
+    relever_stylo(servos["poignet"])
+    deplacer(servos, angle_epaule, angle_coude)
+    reinitialiser_lectures()
