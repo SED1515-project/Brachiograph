@@ -1,7 +1,8 @@
 from GCode.Analyseur_gcode import lire_fichier
 from GCode.Interpreteur_gcode import executeur
-
-from Controle_servos import creer_servo, desactiver
+from Interactive.Lecture_potentiometres import lecture
+from Controle_servos import creer_servo, desactiver, retour_position_initial
+from Interactive.Cinematique_inverse import cinematique_inverse
 
 
 # Configuration des broches
@@ -10,6 +11,10 @@ PIN_COUDE = 1
 PIN_POIGNET = 2
 
 
+#position initial
+x_init = 0
+y_init = 0
+
 FICHIERS_GCODE = {
     1: "line.gcode",
     2: "circle.gcode",
@@ -17,8 +22,16 @@ FICHIERS_GCODE = {
     4: "circle_and_square.gcode"
 }
 
+
 def interactive(servos):
     """Gere le mode de dessin interactif"""
+    retour_position_initial(servos, x_init, y_init)
+
+    while True:
+        x, y, state = lecture()
+        angles = cinematique_inverse(x,y)
+
+
     return None
 
 def gcode(servos,nom_fichier):
@@ -51,6 +64,7 @@ while True:
                   "Votre choix: ")
 
     if choix == "1":
+        
         interactive(servos)
 
     elif choix == "2":
