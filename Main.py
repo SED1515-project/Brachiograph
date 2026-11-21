@@ -1,7 +1,7 @@
 from GCode.Analyseur_gcode import lire_fichier
 from GCode.Interpreteur_gcode import executeur
 from Interactive.Lecture_potentiometres import lecture
-from Controle_servos import creer_servo, desactiver, retour_position_initial
+from Controle_servos import creer_servo, desactiver, retour_position_initial, deplacer, abaisser_stylo, relever_stylo
 from Interactive.Cinematique_inverse import cinematique_inverse
 
 
@@ -22,17 +22,47 @@ FICHIERS_GCODE = {
     4: "circle_and_square.gcode"
 }
 
-
+# used AI to make this function
 def interactive(servos):
-    """Gere le mode de dessin interactif"""
+
+    # Return to initial position
     retour_position_initial(servos, x_init, y_init)
 
+    dernier_state = False
+    dernier_x = x_init
+    dernier_y = y_init
+
     while True:
-        x, y, state = lecture()
-        angles = cinematique_inverse(x,y)
 
+        # Read potentiometers and button
+        dx, dy, state = lecture()
 
-    return None
+        # Calculate actual pen position
+        x = x_init + dx
+        y = y_init + dy
+
+        # Calculate servo angles when position changes
+        if x != dernier_x or y != dernier_y:
+
+            angles = cinematique_inverse(x, y)
+
+            if angles is not None:
+                deplacer(servos, angles[0], angles[1])
+
+            dernier_x = x
+            dernier_y = y
+
+        # Control the pen
+        if state != dernier_state:
+
+            if state:
+                abaisser_stylo(servos["poignet"])
+            else:
+                relever_stylo(servos["poignet"])
+
+            dernier_state = state
+
+            
 
 def gcode(servos,nom_fichier):
     # Lit le fichier G-Code et récupère la liste des instructions 
