@@ -1,4 +1,5 @@
-from machine import ADC, Pin
+rom machine import ADC, Pin
+
 
 
 # les Pins
@@ -11,12 +12,32 @@ potentiometre_X = ADC(Pin (POTENTIOMETRE_X_PIN))
 potentiometre_Y = ADC(Pin (POTENTIOMETRE_Y_PIN))
 stylo = Pin(STYLO_PIN, Pin.IN, Pin.PULL_DOWN)
 
+ADC_MAX = 65535
+DISTANCE = 10 #centimetres
+
+# position presente et precedente 
+x = 0.0
+y = 0.0
+ancien_x = None
+ancien_y = None
+
 
 def lecture():
-    "lire les entrees de l'utilisateur x et y ainsi que l'etat du stylo"
-  
+    "lire les entrees de l'utilisateur x et y ainsi que le stylo abaiser ou lever"
+    global x, y, ancien_x, ancien_y
+
+    #lecture des deux potentiometre et du button pour le stylo
     x_adc = potentiometre_X.read_u16()
     y_adc = potentiometre_Y.read_u16()
-    stylo_state = stylo.value()
+    state = stylo.value()
 
-    return x_adc, y_adc, stylo_state
+    # 
+    if ancien_x is not None and ancien_y is not None:
+       x += (x_adc - ancien_x) * DISTANCE / ADC_MAX
+       y += (y_adc - ancien_y) * DISTANCE / ADC_MAX
+
+    ancien_x = x_adc
+    ancien_y = y_adc
+
+    return x, y, state # x, y est en centimetre et state est en True or False
+
