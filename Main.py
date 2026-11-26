@@ -24,7 +24,7 @@ FICHIERS_GCODE = {
 
 # used AI to make this function
 def interactive(servos):
-    """Responsable: ScNova
+    """Responsable: labessi
 
     Initialise la position, lit continuellement les potentiomètres et le
     bouton, convertit les coordonnées en angles, applique les corrections
@@ -77,7 +77,7 @@ def interactive(servos):
 
 def gcode(servos,nom_fichier):
     """
-    Responsable: ScNova
+    Responsable: labessi
 
     Lit le fichier G-code, puis transmet chaque commande et ses paramètres
     à l'interpréteur jusqu'à la fin du fichier ou jusqu'à une commande M18.
@@ -101,7 +101,7 @@ def gcode(servos,nom_fichier):
 def main():
     
      """
-    Responsable: ScNova
+    Responsable: labessi
     
     Crée les trois servos, charge la table de calibration, affiche le menu,
     lance le mode choisi et permet de démarrer la calibration. Si un G-code
