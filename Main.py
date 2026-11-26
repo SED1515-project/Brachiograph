@@ -171,3 +171,7 @@ def main():
     
         else:
             print("Mode non reconnu")
+
+
+if __name__ == "__main__":
+    main()
