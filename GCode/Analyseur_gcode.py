@@ -1,5 +1,15 @@
 def lire_fichier(nom_fichier):
-    """Lit le fichier G-Code et retourne une liste d'instructions"""
+    """Responsable: ScNova 
+
+    Lit le fichier ligne par ligne, ignore les lignes vides, sépare la
+    commande de ses paramètres, convertit les valeurs en nombres et
+    construit la liste ordonnée des instructions.
+
+    Entrées : nom_fichier (str, chemin du fichier G-code).
+    Sorties : liste de tuples (commande, parametres), où parametres est
+              un dictionnaire associant une lettre à une valeur float.
+    Appels : méthodes de lecture de fichier et opérations sur chaînes."""
+    
     instructions = []
     with open(nom_fichier,"r") as file:
         for line in file:
