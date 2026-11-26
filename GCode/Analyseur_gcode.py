@@ -1,5 +1,5 @@
 def lire_fichier(nom_fichier):
-    """Responsable: ScNova 
+    """Responsable: Lilia
 
     Lit le fichier ligne par ligne, ignore les lignes vides, sépare la
     commande de ses paramètres, convertit les valeurs en nombres et
