@@ -15,7 +15,7 @@ PAUSE_DEPLACEMENT_S = 0.2  # temps laissé aux servos après un G1 A MODIFIER
 PAUSE_STYLO_S = 0.3         # temps laissé au poignet après M3 / M5 A MODIFIER
 
 def creer_servo(pin):
-    """ Responsable: Lisa
+    """ Responsable: TheKingyveL
 
     Crée un objet PWM associé à la broche indiquée et configure sa
     fréquence à 50 Hz.
