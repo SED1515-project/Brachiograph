@@ -23,7 +23,19 @@ ancien_y = None
 
 
 def lecture():
-    "lire les entrees de l'utilisateur x et y ainsi que le stylo abaiser ou lever"
+    """
+    Responsable: ScNova
+
+    Lit les deux potentiomètres et l'état du bouton du stylo. Met à jour
+    les coordonnées X et Y en millimètres à partir des variations des
+    lectures analogiques depuis l'appel précédent.
+
+    Entrées : aucune (lecture directe du matériel).
+    Sorties : tuple (x, y, state), où x et y sont des flottants en mm
+              et state est un booléen.
+    Appels : aucun.
+    
+    """
     global x, y, ancien_x, ancien_y
 
     #lecture des deux potentiometre et du button pour le stylo
