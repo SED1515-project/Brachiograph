@@ -3,7 +3,7 @@ from Controle_servos import deplacer, desactiver, abaisser_stylo, relever_stylo
 
 
 def executeur (servos, commande, parametres):
-    """Responsable: TheKingyveL
+    """Responsable: ellaissleepy
 
     Interprète une commande. Pour G1, récupère les angles S (épaule) et
     E (coude), applique les corrections de calibration puis déplace le
