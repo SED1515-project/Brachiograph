@@ -1,6 +1,6 @@
 def calibrer(nom, servo, autre, fichier, debut=0, pas=10):
     """
-    Responsable: labessi
+    Responsable: TheKingyveL
 
     Effectue une séquence de calibration pour un servo à la fois. L'autre
     servo est maintenu à une position de référence. Pour chaque angle
@@ -20,7 +20,7 @@ def calibrer(nom, servo, autre, fichier, debut=0, pas=10):
 
 def calibration_configuration(fichier):
     """
-    Responsable: labessi
+    Responsable: TheKingyveL
 
     Lit les mesures stockées dans le fichier et construit une table de
     corrections distincte pour l'épaule et le coude. Chaque mesure associe
@@ -37,7 +37,7 @@ def calibration_configuration(fichier):
 
 def correction(points, angle):
     """
-    Responsable: labessi
+    Responsable: TheKingyveL
 
     Calcule une correction pour l'angle demandé par interpolation linéaire
     entre deux mesures voisines. Si aucune paire ne couvre l'angle, la
@@ -53,7 +53,7 @@ def correction(points, angle):
 
 def appliquer_corrections(epaule, coude, table_calibration):
     """
-    Responsable: labessi
+    Responsable: TheKingyveL
 
     Applique séparément la correction de l'épaule et du coude aux angles
     calculés. Un angle égal à None reste None, afin de permettre les
