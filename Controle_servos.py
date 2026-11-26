@@ -28,7 +28,7 @@ def creer_servo(pin):
     return servo
 
 def positionner (servo, angle):
-     """ Responsable: Lisa
+     """ Responsable: TheKingyveL
 
     Convertit l'angle demandé en rapport cyclique PWM et commande
     directement le servomoteur.
@@ -40,7 +40,7 @@ def positionner (servo, angle):
 
 
 def deplacer(servos, S_valeur = None, E_valeur = None):
-    """Responsable: Lisa 
+    """Responsable: TheKingyveL
 
     Déplace l'épaule et/ou le coude selon les angles fournis, applique
     les décalages locaux configurés, puis attend la fin du mouvement.
@@ -58,7 +58,7 @@ def deplacer(servos, S_valeur = None, E_valeur = None):
 
 
 def desactiver(servos):
-    """ Responsable: Lisa
+    """ Responsable: TheKingyveL
 
     Désactive les signaux PWM de tous les servomoteurs du dictionnaire.
 
@@ -71,7 +71,7 @@ def desactiver(servos):
     
 
 def relever_stylo(servo):
-    """ Responsable: Lisa
+    """ Responsable: ScNova
 
     Place le servo du poignet à l'angle prédéfini correspondant au stylo
     relevé, puis attend le temps de stabilisation.
@@ -85,7 +85,7 @@ def relever_stylo(servo):
     
 
 def abaisser_stylo(servo):
-    """Responsable: Lisa
+    """Responsable: ScNova
 
     Place le servo du poignet à l'angle prédéfini correspondant au stylo
     abaissé, puis attend le temps de stabilisation.
@@ -97,7 +97,7 @@ def abaisser_stylo(servo):
     sleep(PAUSE_STYLO_S)
 
 def retour_position_initial(servos, angle_epaule, angle_coude):
-    """ Responsable: Lisa
+    """ Responsable: TheKingyveL
 
     Relève le stylo, ramène l'épaule et le coude aux angles initiaux,
     puis réinitialise les références des potentiomètres.
