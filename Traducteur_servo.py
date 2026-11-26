@@ -1,6 +1,6 @@
 def traduit(angle: float) -> int:
 	 """
-    Responsable: ellaissleepy
+    Responsable: -
 
     Limite l'angle à [0, 180] degrés, puis le convertit en valeur entière
     de rapport cyclique PWM utilisée par la méthode duty_u16().
