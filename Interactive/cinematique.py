@@ -10,16 +10,28 @@ OFFSET_A = 75
 OFFSET_B = 150     
 
 def borne(x):
-    """Ramène x dans la plage [-1, 1] pour éviter les erreurs de domaine
-    lors de l'utilisation des fonctions trigonométriques inverses."""
+    """Responsable: Lisa
+
+    Limite une valeur numérique à l'intervalle [-1, 1] afin de protéger
+    les appels aux fonctions trigonométriques inverses.
+
+    Entrées : x (float), valeur à limiter.
+    Sorties : float compris entre -1 et 1.
+    Appels : aucun."""
     return max(-1.0, min(1.0, x))   
 
 def cinematique_inverse(C_x, C_y):
 
-    """Calcule les angles des servos pour amener le stylo en (C_x, C_y) (mm).
+    """ Responsable: Lisa
 
-    Retourne (servoA, servoB) en degrés, ou None si le point est
-    inatteignable ou si un angle sort de la plage 0 à 180 degrés.
+    Calcule les angles des servos épaule et coude nécessaires pour placer
+    le stylo aux coordonnées cibles. Vérifie l'atteignabilité du point et
+    la plage admissible de chaque servo.
+
+    Entrées : C_x (float, mm), C_y (float, mm).
+    Sorties : tuple (servoA, servoB) en degrés, ou None si le point est
+              inaccessible ou si un angle est hors de [0, 180].
+    Appels : borne().
     """
     d = math.sqrt((A_x - C_x) ** 2 + (A_y - C_y) ** 2)
 
