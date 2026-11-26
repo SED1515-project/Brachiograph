@@ -1,11 +1,14 @@
 def traduit(angle: float) -> int:
-	"""
-	Convertit un angle en degrés vers l'entrée correspondante
-	pour la méthode duty_u16 de la classe servo
+	 """
+    Responsable: ellaissleepy
 
-	Voir https://docs.micropython.org/en/latest/library/machine.PWM.html pour plus de
-	détails sur la méthode duty_u16
-	"""
+    Limite l'angle à [0, 180] degrés, puis le convertit en valeur entière
+    de rapport cyclique PWM utilisée par la méthode duty_u16().
+
+    Entrées : angle (float, degrés).
+    Sorties : int, valeur PWM.
+    Appels : aucun.
+    """
 
 	MIN = 1638 # 0 degrés
 	MAX = 8192 # 180 degrés
