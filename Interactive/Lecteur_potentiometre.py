@@ -54,6 +54,15 @@ def lecture():
     return x, y, state # x, y est en millimetre et state est en True or False
 
 def reinitialiser_lectures():
+    """Responsable: ScNova
+
+    Remet les coordonnées X et Y à zéro et mémorise les lectures ADC
+    courantes comme références pour le prochain appel à lecture().
+
+    Entrées : aucune (lecture directe du matériel).
+    Sorties : aucune (None).
+    Appels : aucun.
+    """
     global x, y, ancien_x, ancien_y
 
     x = 0
